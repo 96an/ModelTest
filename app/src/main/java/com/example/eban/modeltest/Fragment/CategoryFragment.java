@@ -78,6 +78,7 @@ public class CategoryFragment extends Fragment {
 //                        Toast.makeText(getContext(), String.format("%s|%s", getRef(position).getKey(), model.getName()), Toast.LENGTH_SHORT).show();
                         Intent startGame = new Intent(getActivity(), Start.class);
                         Common.categoryId = mFirebaseRecyclerAdapter.getRef(position).getKey();
+                        Common.categoryName=model.getName();
                         startActivity(startGame);
                     }
                 });

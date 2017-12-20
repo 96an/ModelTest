@@ -22,6 +22,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:textAlignment="center"
         android:layout_marginTop="20dp"
         android:visibility="invisible" />
 

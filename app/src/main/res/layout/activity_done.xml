@@ -25,6 +25,7 @@
                 android:id="@+id/txtTotalScore"
                 android:textSize="30sp"
                 android:text="Score: 0"
+                android:layout_marginLeft="8dp"
                 android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -35,6 +36,7 @@
                 android:text="Passed: 0/30"
                 android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="8dp"
                 android:layout_height="wrap_content" />
 
             <ProgressBar
