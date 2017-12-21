@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.example.eban.modeltest.Interface.ItemClickListener;
 import com.example.eban.modeltest.Model.Category;
 import com.example.eban.modeltest.R;
-import com.example.eban.modeltest.Start;
+import com.example.eban.modeltest.Activity.Start;
 import com.example.eban.modeltest.ViewHolder.CategoryViewHolder;
 import com.example.eban.modeltest.common.Common;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;

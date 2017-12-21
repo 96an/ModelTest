@@ -1,4 +1,4 @@
-package com.example.eban.modeltest;
+package com.example.eban.modeltest.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.eban.modeltest.Model.QuestionScore;
+import com.example.eban.modeltest.R;
 import com.example.eban.modeltest.ViewHolder.ScoreDetailViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;

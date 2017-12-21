@@ -11,18 +11,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Home" />
-        <activity android:name=".Start" />
-        <activity android:name=".Playing" />
-        <activity android:name=".Done" />
-        <activity android:name=".ScoreDetails"></activity>
+        <activity android:name=".Activity.Home" />
+        <activity android:name=".Activity.Start" />
+        <activity android:name=".Activity.Playing" />
+        <activity android:name=".Activity.Done" />
+        <activity android:name=".Activity.ScoreDetails"></activity>
+
+        <service android:name=".BroadcastReceiver.MyFirebaseIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <service android:name=".BroadcastReceiver.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

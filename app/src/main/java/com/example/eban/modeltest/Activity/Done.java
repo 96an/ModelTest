@@ -1,4 +1,4 @@
-package com.example.eban.modeltest;
+package com.example.eban.modeltest.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.eban.modeltest.Model.QuestionScore;
+import com.example.eban.modeltest.R;
 import com.example.eban.modeltest.common.Common;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

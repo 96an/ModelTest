@@ -1,4 +1,4 @@
-package com.example.eban.modeltest;
+package com.example.eban.modeltest.Activity;
 
 import android.content.Intent;
 import android.os.CountDownTimer;
@@ -10,9 +10,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.eban.modeltest.R;
 import com.example.eban.modeltest.common.Common;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 public class Playing extends AppCompatActivity implements View.OnClickListener {

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_vertical"
-    tools:context="com.example.eban.modeltest.ScoreDetails">
+    tools:context="com.example.eban.modeltest.Activity.ScoreDetails">
 
     <android.support.v7.widget.CardView
         android:id="@+id/title"

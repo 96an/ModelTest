@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_vertical"
-    tools:context="com.example.eban.modeltest.Done">
+    tools:context="com.example.eban.modeltest.Activity.Done">
 
     <RelativeLayout
         android:layout_centerInParent="true"
