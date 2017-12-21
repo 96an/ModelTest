@@ -4,12 +4,14 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.eban.modeltest.BroadcastReceiver.AlarmReceiver;
@@ -35,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference users;
 
+    CheckBox mCheckBox;
+
+    public static String PRESS = "PRESS";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
         mSignInBtn = (Button) findViewById(R.id.sign_in);
         mSignUpBtn = (Button) findViewById(R.id.sign_up);
 
+        mCheckBox=findViewById(R.id.check);
+
+        receiveData();
+
         mSignUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,22 +71,50 @@ public class MainActivity extends AppCompatActivity {
         mSignInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                signIn(mUserIn.getText().toString(), mPassIn.getText().toString());
+
+                if (mCheckBox.isChecked()) {
+                    saveData();
+                    signIn(mUserIn.getText().toString(), mPassIn.getText().toString());
+                } else {
+                    signIn(mUserIn.getText().toString(), mPassIn.getText().toString());
+                }
             }
         });
     }
 
+    public void saveData() {
+
+        String userName = mUserIn.getText().toString();
+        String userPass = mPassIn.getText().toString();
+
+        SharedPreferences preferences = getSharedPreferences(PRESS, 0);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("USER", userName);
+        editor.putString("PASS", userPass);
+        editor.commit();
+    }
+
+    public void receiveData() {
+        SharedPreferences preferences = getSharedPreferences(PRESS, 0);
+        String u = preferences.getString("USER", null);
+        String p = preferences.getString("PASS", null);
+
+        mUserIn.setText(u);
+        mPassIn.setText(p);
+
+    }
+
     private void registerAlarm() {
 
-        Calendar calendar=Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY,9);
-        calendar.set(Calendar.MINUTE,10);
-        calendar.set(Calendar.SECOND,0);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 9);
+        calendar.set(Calendar.MINUTE, 10);
+        calendar.set(Calendar.SECOND, 0);
 
-        Intent intent=new Intent(MainActivity.this, AlarmReceiver.class);
-        PendingIntent pendingIntent= PendingIntent.getActivity(MainActivity.this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent intent = new Intent(MainActivity.this, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager am = (AlarmManager) this.getSystemService(this.ALARM_SERVICE);
-        am.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 
     }
 
