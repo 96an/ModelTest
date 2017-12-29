@@ -51,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
 
-        mUserIn = (MaterialEditText) findViewById(R.id.edtUser);
-        mPassIn = (MaterialEditText) findViewById(R.id.edtPass);
+        mUserIn = findViewById(R.id.edtUser);
+        mPassIn = findViewById(R.id.edtPass);
 
-        mSignInBtn = (Button) findViewById(R.id.sign_in);
-        mSignUpBtn = (Button) findViewById(R.id.sign_up);
+        mSignInBtn = findViewById(R.id.sign_in);
+        mSignUpBtn = findViewById(R.id.sign_up);
 
-        mCheckBox=findViewById(R.id.check);
+        mCheckBox = findViewById(R.id.check);
 
         receiveData();
 
@@ -159,9 +159,9 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater = this.getLayoutInflater();
         View sign_up_layout = inflater.inflate(R.layout.sign_up_layout, null);
 
-        edtNewUser = (MaterialEditText) sign_up_layout.findViewById(R.id.edtNewUser);
-        edtNewPass = (MaterialEditText) sign_up_layout.findViewById(R.id.edtNewPass);
-        edtNewEmail = (MaterialEditText) sign_up_layout.findViewById(R.id.edtNewEmail);
+        edtNewUser =  sign_up_layout.findViewById(R.id.edtNewUser);
+        edtNewPass =  sign_up_layout.findViewById(R.id.edtNewPass);
+        edtNewEmail = sign_up_layout.findViewById(R.id.edtNewEmail);
 
         alertDialog.setView(sign_up_layout);
         alertDialog.setIcon(R.drawable.ic_account_circle_black_24dp);

@@ -17,9 +17,9 @@ import com.squareup.picasso.Picasso;
 public class Playing extends AppCompatActivity implements View.OnClickListener {
 
     final static long INTERVAL = 1000;
-    final static long TIMEOUT = 7000;
-    int progressValue = 0;
-
+//    static long TIMEOUT = 1000 * 15;
+//    int progressValue = 0;
+    int c=15;
     CountDownTimer mCountDownTimer;
 
     int index = 0, score = 0, thisQuestion = 0, totalQuestion, correctQuestion;
@@ -35,6 +35,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing);
+
 
         txtScore = findViewById(R.id.txtScore);
         txtQuestionNum = findViewById(R.id.txtTotalQuestion);
@@ -56,28 +57,28 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-        mCountDownTimer.cancel();
-
         if (index < totalQuestion) {
             Button clickedButton = (Button) view;
             if (clickedButton.getText().equals(Common.questionList.get(index).getCorrectAnswer())) {
-                score += 10;
+                score += 1;
                 correctQuestion++;
                 showQuestion(++index);
             } else {
 
-                Intent intent = new Intent(this, Done.class);
-                Bundle dataSend = new Bundle();
-                dataSend.putInt("SCORE", score);
-                dataSend.putInt("TOTAL", totalQuestion);
-                dataSend.putInt("CORRECT", correctQuestion);
-                intent.putExtras(dataSend);
-                startActivity(intent);
-                finish();
+                showQuestion(++index);
+//                Intent intent = new Intent(this, Done.class);
+//                Bundle dataSend = new Bundle();
+//                dataSend.putInt("SCORE", score);
+//                dataSend.putInt("TOTAL", totalQuestion);
+//                dataSend.putInt("CORRECT", correctQuestion);
+//                intent.putExtras(dataSend);
+//                startActivity(intent);
+//                finish();
 
             }
 
-            txtScore.setText(String.format("%d", score));
+//            txtScore.setText(String.format("%d", score));
+
         }
     }
 
@@ -85,8 +86,8 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
         if (index < totalQuestion) {
             thisQuestion++;
             txtQuestionNum.setText(String.format("%d / %d", thisQuestion, totalQuestion));
-            mProgressBar.setProgress(0);
-            progressValue = (0);
+//            mProgressBar.setProgress(0);
+//            progressValue = (0);
 
 
             if (Common.questionList.get(index).getIsImageQuestion().equals("true")) {
@@ -106,10 +107,8 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
             btnB.setText(Common.questionList.get(index).getAnswerB());
             btnC.setText(Common.questionList.get(index).getAnswerC());
             btnD.setText(Common.questionList.get(index).getAnswerD());
-
-            mCountDownTimer.start();
-        }
-        else {
+        } else {
+            mCountDownTimer.cancel();
             Intent intent = new Intent(this, Done.class);
             Bundle dataSend = new Bundle();
             dataSend.putInt("SCORE", score);
@@ -124,22 +123,34 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onResume() {
         super.onResume();
-
         totalQuestion = Common.questionList.size();
-
+        long TIMEOUT;
+        if (Common.categoryName.contains("Model Test 1")) {
+            TIMEOUT = 1000 * 30;
+            c=30;
+        } else {
+            TIMEOUT = 1000*15;
+        }
         mCountDownTimer = new CountDownTimer(TIMEOUT,INTERVAL) {
             @Override
             public void onTick(long i) {
-                mProgressBar.setProgress(progressValue);
-                progressValue++;
-
+//                mProgressBar.setProgress(progressValue);
+//                progressValue++;
+                txtScore.setText(String.valueOf(--c));
             }
             @Override
             public void onFinish() {
-                mCountDownTimer.cancel();
-                showQuestion(++index);
+                    Intent intent = new Intent(getApplication(), Done.class);
+                    Bundle dataSend = new Bundle();
+                    dataSend.putInt("SCORE", score);
+                    dataSend.putInt("TOTAL", totalQuestion);
+                    dataSend.putInt("CORRECT", correctQuestion);
+                    intent.putExtras(dataSend);
+                    startActivity(intent);
+                    finish();
             }
         };
+        mCountDownTimer.start();
         showQuestion(index);
     }
 }

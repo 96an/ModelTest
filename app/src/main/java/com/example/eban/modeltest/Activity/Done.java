@@ -16,12 +16,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Done extends AppCompatActivity {
 
-    Button tryAganin;
+    Button tryAgain;
     TextView txtTotalScore,txtTotalQuestion;
     ProgressBar mProgressBar;
 
     FirebaseDatabase mDatabase;
-    DatabaseReference qustion_score;
+    DatabaseReference question_score;
 
 
     @Override
@@ -30,14 +30,14 @@ public class Done extends AppCompatActivity {
         setContentView(R.layout.activity_done);
 
         mDatabase = FirebaseDatabase.getInstance();
-        qustion_score= mDatabase.getReference("Question_Score");
+        question_score= mDatabase.getReference("Question_Score");
 
         txtTotalQuestion =findViewById(R.id.txtTotalQuestion);
         txtTotalScore = findViewById(R.id.txtTotalScore);
-        tryAganin = findViewById(R.id.btnTryAgain);
+        tryAgain = findViewById(R.id.btnTryAgain);
         mProgressBar = findViewById(R.id.doneProgressBar);
 
-        tryAganin.setOnClickListener(new View.OnClickListener() {
+        tryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Done.this,Home.class);
@@ -58,7 +58,7 @@ public class Done extends AppCompatActivity {
             mProgressBar.setMax(totalQuestion);
             mProgressBar.setProgress(correctAnswer);
 
-            qustion_score.child(String.format("%s_s",
+            question_score.child(String.format("%s_%s",
                     Common.currentUser.getUserName(),Common.categoryId))
                     .setValue(new QuestionScore(String.format("%s_s",
                             Common.currentUser.getUserName(),

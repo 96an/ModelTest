@@ -16,19 +16,27 @@
         android:layout_marginTop="20dp"
         android:gravity="center" />
 
-    <TextView
-        android:id="@+id/questionText"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="@android:color/white"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        android:layout_marginTop="20dp"
-        android:visibility="invisible" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/l">
+
+        <TextView
+            android:id="@+id/questionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/l"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:visibility="invisible" />
+    </ScrollView>
+
 
     <RelativeLayout
+        android:id="@+id/l"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -39,8 +47,7 @@
             android:id="@+id/group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="10dp">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,7 +60,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="0"
+                    android:text="15"
                     android:textColor="@android:color/white"
                     android:textSize="36sp" />
 
@@ -61,6 +68,7 @@
                     android:id="@+id/txtTotalQuestion"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textAlignment="center"
                     android:layout_weight="1"
                     android:text="1/30"
                     android:textColor="@android:color/white"
@@ -75,7 +83,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:max="5" />
+                android:max="5"
+                android:visibility="invisible"/>
 
             <Button
                 android:id="@+id/btnAnswerA"

@@ -6,7 +6,7 @@ package com.example.eban.modeltest.Model;
 
 public class QuestionScore {
 
-    private String Question_score;
+    private String Question_Score;
     private String User;
     private String Score;
     private String CategoryId;
@@ -15,20 +15,20 @@ public class QuestionScore {
     public QuestionScore() {
     }
 
-    public QuestionScore(String question_score, String user, String score, String categoryId, String categoryName) {
-        Question_score = question_score;
-        Score = score;
+    public QuestionScore(String question_Score, String user, String score, String categoryId, String categoryName) {
+        Question_Score = question_Score;
         User = user;
+        Score = score;
         CategoryId = categoryId;
         CategoryName = categoryName;
     }
 
-    public String getQuestion_score() {
-        return Question_score;
+    public String getQuestion_Score() {
+        return Question_Score;
     }
 
-    public void setQuestion_score(String question_score) {
-        Question_score = question_score;
+    public void setQuestion_Score(String question_Score) {
+        Question_Score = question_Score;
     }
 
     public String getScore() {
